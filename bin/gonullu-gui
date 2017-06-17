@@ -19,13 +19,19 @@
 #
 
 from PyQt5.QtWidgets import QApplication
-# from PyQt5.QtCore import QTranslator, QLocale
-from gonullugui import coreui  # , resource
+from PyQt5.QtCore import QTranslator, QLocale
+from gonullugui import coreui #, resource
 import sys
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    
+    locale = QLocale.system().name()
+    translator = QTranslator(app)
+    translator.load("langs/{}.qm".format(locale))
+    app.installTranslator(translator)
+    
     ex = coreui.gonulluWindow()
     ex.show()
     sys.exit(app.exec_())

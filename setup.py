@@ -23,20 +23,24 @@ from os import listdir, system
 langs = []
 for file in listdir('langs'):
     if file.endswith('ts'):
-        system('lrelease-qt5 langs/{}'.format(file))
+        system('lrelease langs/{}'.format(file))
         langs.append(('langs/{}'.format(file)).replace('.ts', '.qm'))
 
 # system('pyrcc5 gonullu-gui.qrc -o gonullugui/resource.py')
 
 setup(
-    name="gonullu-gui",
-    version="20170616.dev1",
+    name="Gonullu-gui", # Because Gonullu's package name is "Gonullu" not
+                        # "gonullu", so naming "Gonullu-gui" instead of
+                        # "gonullu-gui" is more convenient.
+    version="20170616.dev2",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui"],
-    # install_requires=["gonullu"],
+    # install_requires=["gonullu"], # Gonullu isn't in PyPI.
     include_package_data=True,
     package_data={
         "": ["*.md"],
+        "data": ["*.desktop"],
+        "languages": ["*.qm"],
     },
     author="Erdem Ersoy",
     author_email="erdemersoy@live.com",

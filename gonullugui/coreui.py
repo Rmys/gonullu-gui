@@ -23,3 +23,4 @@ from PyQt5.QtWidgets import QWidget
 class gonulluWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.setWindowTitle(self.tr("Gonullu Graphical User Interface"))
