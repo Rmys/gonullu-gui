@@ -17,31 +17,44 @@
 #  MA 02110-1301, USA.
 #
 
+# Imports modules
 from setuptools import setup
 from os import listdir, system
+from distro import linux_distribution
 
+
+# Adds .qm files to langs list. In Pisi GNU/Linux, lrelease-qt5 is exist
+# instead of lrelease.
 langs = []
 for file in listdir('langs'):
     if file.endswith('ts'):
-        system('lrelease langs/{}'.format(file))
+        if (linux_distribution()[0] == "PisiLinux"):
+            system('lrelease-qt5 langs/{}'.format(file))
+        else:
+            system('lrelease langs/{}'.format(file))
         langs.append(('langs/{}'.format(file)).replace('.ts', '.qm'))
 
+# Converts python code but this operation not yet implemented.
 # system('pyrcc5 gonullu-gui.qrc -o gonullugui/resource.py')
 
+# setuptools setup function
 setup(
-    name="Gonullu-gui", # Because Gonullu's package name is "Gonullu" not
-                        # "gonullu", so naming "Gonullu-gui" instead of
-                        # "gonullu-gui" is more convenient.
-    version="20170617.dev1",
+    name="Gonullu-gui",  # Because Gonullu's package name is "Gonullu" not
+                         # "gonullu", so naming "Gonullu-gui" instead of
+                         # "gonullu-gui" is more convenient.
+    version="20170618.dev1",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui"],
+    install_requires=["distro"],
     # install_requires=["gonullu"], # Gonullu isn't in PyPI.
     include_package_data=True,
     package_data={
         "": ["*.md"],
-        "data": ["*.desktop"],
         "languages": ["*.qm"],
     },
+    data_files=[
+        ('/usr/share/applications', ['data/gonullu-gui.desktop'])
+    ],
     author="Erdem Ersoy",
     author_email="erdemersoy@live.com",
     description="Graphical user interface for gonullu.",
