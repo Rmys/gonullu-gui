@@ -45,8 +45,9 @@ setup(
     version="20170618.dev1",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui"],
-    install_requires=["distro"],
-    # install_requires=["gonullu"], # Gonullu isn't in PyPI.
+    # install_requires=[               # If possible, you should installing
+    #     "distro", "gonullu", "PyQt5" # requirements via your distrobution's
+    #     ],                           # package repositories.
     include_package_data=True,
     package_data={
         "": ["*.md"],
@@ -57,7 +58,7 @@ setup(
     ],
     author="Erdem Ersoy",
     author_email="erdemersoy@live.com",
-    description="Graphical user interface for gonullu.",
+    description="Graphical user interface for Gonullu.",
     license="GPLv3",
     keywords=["PyQt5", "gonullu"],
     url="https://github.com/eersoy93/gonullu-gui",

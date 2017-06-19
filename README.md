@@ -1,5 +1,5 @@
-# Gonullu GUI
-Graphical user interface (GUI) for Pisi GNU/Linux's Gonullu application. Gonullu GUI has been written with Python 3.x and PyQt 5.x. For information about Gonullu, see Gonullu's GitHub repository: https://github.com/PisiLinuxNew/gonullu
+# Gonullu Graphical User Interface (Gonullu GUI)
+Gonullu Graphical User Interface (Gonullu GUI) is GUI for Pisi GNU/Linux's Gonullu application. Gonullu GUI has been written with Python 3.x and PyQt 5.x. For information about Gonullu, see Gonullu's GitHub repository ([https://github.com/PisiLinuxNew/gonullu](https://github.com/PisiLinuxNew/gonullu)).
 
 **NOTE:** Gonullu GUI is under development (i.e. non-functional).
 
@@ -17,4 +17,7 @@ After installation, you can run that command in any directory for running:
 
 Also, you can run Gonullu GUI via your desktop menu.
 
-**NOTE:** Gonullu GUI requires gonullu and PyQt5 but you must install them manually.
+**NOTE:** Gonullu GUI requires Gonullu, PyQt5 and [distro](https://pypi.python.org/pypi/distro) but if possible, you should installing requirements via your distrobution's package repositories.
+
+# Translating
+Translation files are langs/*.ts files in source code. Also, gonullu-gui's desktop file in source code (data/gonullu-gui.desktop file) should be translated in accordance with freedesktop.org's Desktop Entry Specification ([https://freedesktop.org/wiki/Specifications/desktop-entry-spec/](https://freedesktop.org/wiki/Specifications/desktop-entry-spec/)).
