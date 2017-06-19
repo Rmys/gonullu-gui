@@ -42,7 +42,7 @@ setup(
     name="Gonullu-gui",  # Because Gonullu's package name is "Gonullu" not
                          # "gonullu", so naming "Gonullu-gui" instead of
                          # "gonullu-gui" is more convenient.
-    version="20170618.dev1",
+    version="20170619.dev1",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui"],
     # install_requires=[               # If possible, you should installing
