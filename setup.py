@@ -44,7 +44,7 @@ setup(
                          # "gonullu-gui" is more convenient.
     version="20170619.dev1",
     packages=["gonullugui"],
-    scripts=["bin/gonullu-gui"],
+    scripts=["bin/gonullu-gui", "bin/gonullu-gui-main"],
     # install_requires=[               # If possible, you should installing
     #     "distro", "gonullu", "PyQt5" # requirements via your distrobution's
     #     ],                           # package repositories.

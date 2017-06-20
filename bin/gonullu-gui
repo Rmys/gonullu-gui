@@ -1,37 +1,28 @@
-#!/usr/bin/env python3
+#!/usr/bin/env bash
 #
-#  Copyright 2017 Erdem Ersoy (erdemersoy@live.com)
+# Copyright 2016 mbusb (https://github.com/mbusb/)
+#           2017 mbusb (https://github.com/mbusb/)
+#                Gautier Pelloux-Prayer (a.k.a. bagage)
+#                                       (https://github.com/bagage)
+#                Erdem Ersoy (erdemersoy@live.com)
 #
-#  This program is free software; you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation; either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program; if not, write to the Free Software
-#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-#  MA 02110-1301, USA.
+# This file has been taken from multibootusb project and altered for Gonullu GUI. For licensing, see that issue of multibootusb project: https://github.com/mbusb/multibootusb/issues/176
 #
 
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtCore import QTranslator, QLocale
-from gonullugui import coreui #, resource
-import sys
+if [ $(which pkexec) ]; then
+    if [ -f /usr/bin/gonullu-gui ]; then
+        pkexec --disable-internal-agent "/usr/bin/gonullu-gui-main" "$@"
+    fi
 
+    if [ -f /usr/local/bin/gonullu-gui ]; then
+        pkexec --disable-internal-agent "/usr/local/bin/gonullu-gui-main" "$@"
+    fi
+else
+    if [ -f /usr/bin/gonullu-gui ]; then
+        /usr/bin/gonullu-gui-main "$@"
+    fi
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    
-    locale = QLocale.system().name()
-    translator = QTranslator(app)
-    translator.load("langs/{}.qm".format(locale))
-    app.installTranslator(translator)
-    
-    ex = coreui.gonulluWindow()
-    ex.show()
-    sys.exit(app.exec_())
+    if [ -f /usr/local/bin/gonullu-gui ]; then
+        /usr/local/bin/gonullu-gui-main "$@"
+    fi
+fi
