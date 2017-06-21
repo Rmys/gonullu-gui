@@ -54,7 +54,9 @@ setup(
         "languages": ["*.qm"],
     },
     data_files=[
-        ('/usr/share/applications', ['data/gonullu-gui.desktop'])
+        ('/usr/share/applications', ['data/gonullu-gui.desktop']),
+        ('/usr/share/polkit-1/actions',
+            ['data/org.freedesktop.policykit.gonullu-gui.policy'])
     ],
     author="Erdem Ersoy",
     author_email="erdemersoy@live.com",

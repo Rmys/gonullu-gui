@@ -33,14 +33,11 @@ if __name__ == "__main__":
     translator.load("langs/{}.qm".format(locale))
     app.installTranslator(translator)
 
-    ex = coreui.gonulluWindow()
-    ex.show()
-
     if os.getuid() != 0:
         runAsRootMsgBox = QMessageBox()
-        runAsRootMsgBox.warning(coreui.gonulluWindow(),
-                                "Gonullu Graphical User Interface",
-                                "Gonullu Graphical User Interface must be run as root.",
-                                QMessageBox.Ok)
-
-    sys.exit(app.exec_())
+        runAsRootMsgBox.warning(coreui.gonulluWindow(), coreui.gonulluWindow().tr("Gonullu Graphical User Interface"), coreui.gonulluWindow().tr("Gonullu Graphical User Interface must be run as root."), QMessageBox.Ok)
+        app.quit()
+    else:
+        ex = coreui.gonulluWindow()
+        ex.show()
+        sys.exit(app.exec_())
