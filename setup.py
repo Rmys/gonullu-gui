@@ -33,6 +33,22 @@ for file in listdir('langs'):
         else:
             system('lrelease langs/{}'.format(file))
         langs.append(('langs/{}'.format(file)).replace('.ts', '.qm'))
+print(langs)
+
+# Adds data files which be specified by setputools setup function's data_files
+# attribute.
+datas = [
+        ('/usr/share/applications', ['data/gonullu-gui.desktop']),
+        ('/usr/share/polkit-1/actions',
+            ['data/org.freedesktop.policykit.gonullu-gui.policy']),
+        ('/usr/share/polkit-1/actions',
+            ['data/org.freedesktop.policykit.gonullu-gui-local.policy'])
+    ]
+
+if (linux_distribution()[0] == "PisiLinux"):
+    datas.append(('/usr/share/gonullu-gui/langs', langs))
+else:
+    datas.append(('/usr/local/share/gonullu-gui/langs', langs))
 
 # Converts python code but this operation not yet implemented.
 # system('pyrcc5 gonullu-gui.qrc -o gonullugui/resource.py')
@@ -42,22 +58,13 @@ setup(
     name="Gonullu-gui",  # Because Gonullu's package name is "Gonullu" not
                          # "gonullu", so naming "Gonullu-gui" instead of
                          # "gonullu-gui" is more convenient.
-    version="20170619.dev1",
+    version="20170622.dev1",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui", "bin/gonullu-gui-main"],
     # install_requires=[               # If possible, you should installing
     #     "distro", "gonullu", "PyQt5" # requirements via your distrobution's
     #     ],                           # package repositories.
-    include_package_data=True,
-    package_data={
-        "": ["*.md"],
-        "languages": ["*.qm"],
-    },
-    data_files=[
-        ('/usr/share/applications', ['data/gonullu-gui.desktop']),
-        ('/usr/share/polkit-1/actions',
-            ['data/org.freedesktop.policykit.gonullu-gui.policy'])
-    ],
+    data_files=datas,
     author="Erdem Ersoy",
     author_email="erdemersoy@live.com",
     description="Graphical user interface for Gonullu.",
