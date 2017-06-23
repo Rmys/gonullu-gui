@@ -33,7 +33,6 @@ for file in listdir('langs'):
         else:
             system('lrelease langs/{}'.format(file))
         langs.append(('langs/{}'.format(file)).replace('.ts', '.qm'))
-print(langs)
 
 # Adds data files which be specified by setputools setup function's data_files
 # attribute.
@@ -58,7 +57,7 @@ setup(
     name="Gonullu-gui",  # Because Gonullu's package name is "Gonullu" not
                          # "gonullu", so naming "Gonullu-gui" instead of
                          # "gonullu-gui" is more convenient.
-    version="20170622.dev1",
+    version="20170623.dev1",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui", "bin/gonullu-gui-main"],
     # install_requires=[               # If possible, you should installing
@@ -70,5 +69,5 @@ setup(
     description="Graphical user interface for Gonullu.",
     license="GPLv3",
     keywords=["PyQt5", "gonullu"],
-    url="https://github.com/eersoy93/gonullu-gui",
+    url="https://github.com/eersoy93/gonullu-gui"
 )
