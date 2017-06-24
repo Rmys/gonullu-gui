@@ -6,7 +6,9 @@
 #                                       (https://github.com/bagage)
 #                Erdem Ersoy (erdemersoy@live.com)
 #
-# This file has been taken from multibootusb project and altered for Gonullu GUI. For licensing, see that issue of multibootusb project: https://github.com/mbusb/multibootusb/issues/176
+# This file has been taken from multibootusb project and altered for
+# Gonullu GUI, so this file licensed by GPLv2. For GPLv2, see LICENSE_2 file
+# in Gonullu GUI source code.
 #
 
 if [ $(which pkexec) ]; then

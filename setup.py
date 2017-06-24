@@ -37,17 +37,17 @@ for file in listdir('langs'):
 # Adds data files which be specified by setputools setup function's data_files
 # attribute.
 datas = [
-        ('/usr/share/applications', ['data/gonullu-gui.desktop']),
-        ('/usr/share/polkit-1/actions',
+        ('/usr/share/applications/', ['data/gonullu-gui.desktop']),
+        ('/usr/share/polkit-1/actions/',
             ['data/org.freedesktop.policykit.gonullu-gui.policy']),
-        ('/usr/share/polkit-1/actions',
+        ('/usr/share/polkit-1/actions/',
             ['data/org.freedesktop.policykit.gonullu-gui-local.policy'])
     ]
 
 if (linux_distribution()[0] == "PisiLinux"):
-    datas.append(('/usr/share/gonullu-gui/langs', langs))
+    datas.append(('/usr/share/gonullu-gui/langs/', langs))
 else:
-    datas.append(('/usr/local/share/gonullu-gui/langs', langs))
+    datas.append(('/usr/local/share/gonullu-gui/langs/', langs))
 
 # Converts python code but this operation not yet implemented.
 # system('pyrcc5 gonullu-gui.qrc -o gonullugui/resource.py')
@@ -57,7 +57,7 @@ setup(
     name="Gonullu-gui",  # Because Gonullu's package name is "Gonullu" not
                          # "gonullu", so naming "Gonullu-gui" instead of
                          # "gonullu-gui" is more convenient.
-    version="20170623.dev1",
+    version="1.0.dev0",
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui", "bin/gonullu-gui-main"],
     # install_requires=[               # If possible, you should installing
