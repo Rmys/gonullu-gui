@@ -17,9 +17,11 @@
 #  MA 02110-1301, USA.
 #
 
+# Imports modules
 from PyQt5.QtWidgets import QWidget
 
 
+# Defines main program window class
 class gonulluWindow(QWidget):
     def __init__(self):
         super().__init__()

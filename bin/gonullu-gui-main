@@ -18,6 +18,7 @@
 #  MA 02110-1301, USA.
 #
 
+# Imports modules
 from PyQt5.QtWidgets import QApplication, QMessageBox
 from PyQt5.QtCore import QTranslator, QLocale, QCoreApplication
 from gonullugui import gonulluWindow  # , resource
@@ -26,21 +27,34 @@ import sys
 import os
 
 
+# Main program routine
 if __name__ == "__main__":
 
+    # Makes Qt application instance for running the application.
     app = QApplication(sys.argv)
 
+    # Sets locale and translation
     locale = QLocale.system().name()
     translator = QTranslator(app)
-    if (linux_distribution()[0] == "PisiLinux"):
+    if (linux_distribution()[0] == "PisiLinux"):  # Pisi GNU/Linux detection
         translator.load("/usr/share/gonullu-gui/langs/{}.qm".format(locale))
     else:
-        translator.load("/usr/local/share/gonullu-gui/langs/{}.qm".format(locale))
+        translator.load("/usr/local/share/gonullu-gui/langs/{}.qm"
+                        .format(locale))
     app.installTranslator(translator)
 
+    # Detects whether the user is running the program is root
     if os.getuid() != 0:
         runAsRootMsgBox = QMessageBox()
-        runAsRootMsgBox.warning(None, QCoreApplication.translate("__main__", "Gonullu Graphical User Interface"), QCoreApplication.translate("__main__", "Gonullu Graphical User Interface must be run as root."), QMessageBox.Ok)
+        runAsRootMsgBox.warning(
+            None,
+            QCoreApplication.translate(
+                "__main__",
+                "Gonullu Graphical User Interface"),
+            QCoreApplication.translate(
+                "__main__",
+                "Gonullu Graphical User Interface must be run as root."),
+            QMessageBox.Ok)
         app.quit()
     else:
         ex = gonulluWindow()
