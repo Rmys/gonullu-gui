@@ -18,7 +18,9 @@
 #
 
 # Imports modules
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import (QWidget, QGridLayout, QLabel, QLineEdit,
+                             QPushButton, QToolTip, QMessageBox)
+import gonullugui
 
 
 # Defines main program window class
@@ -26,3 +28,48 @@ class gonulluWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle(self.tr("Gonullu Graphical User Interface"))
+        self.resize(320, 240)
+
+        memoryLabel = QLabel(self.tr("Memory Amount:"))
+        cpuLabel = QLabel(self.tr("Number of CPUs:"))
+        emailLabel = QLabel(self.tr("E-Mail Address:"))
+
+        memoryEdit = QLineEdit()
+        cpuEdit = QLineEdit()
+        emailEdit = QLineEdit()
+
+        launchButton = QPushButton(self.tr("Launch"))
+        aboutButton = QPushButton(self.tr("About"))
+        aboutQtButton = QPushButton(self.tr("About Qt"))
+
+        gonulluWindowLayout = QGridLayout()
+        gonulluWindowLayout.setSpacing(10)
+
+        gonulluWindowLayout.addWidget(memoryLabel, 0, 0)
+        gonulluWindowLayout.addWidget(memoryEdit, 0, 1, 1, 2)
+
+        gonulluWindowLayout.addWidget(cpuLabel, 1, 0)
+        gonulluWindowLayout.addWidget(cpuEdit, 1, 1, 1, 2)
+
+        gonulluWindowLayout.addWidget(emailLabel, 2, 0)
+        gonulluWindowLayout.addWidget(emailEdit, 2, 1, 1, 2)
+
+        gonulluWindowLayout.addWidget(launchButton, 3, 0)
+        gonulluWindowLayout.addWidget(aboutButton, 3, 1)
+        gonulluWindowLayout.addWidget(aboutQtButton, 3, 2)
+
+        launchButton.clicked.connect(self.launchMethod)
+        aboutButton.clicked.connect(self.aboutMethod)
+        aboutQtButton.clicked.connect(self.aboutQtMethod)
+
+        self.setLayout(gonulluWindowLayout)
+
+    def launchMethod(self):
+        pass
+
+    def aboutMethod(self):
+        QMessageBox.about(self, self.tr("About"),
+                          self.tr("Gonullu Graphical User Interface\n\nVersion ") + gonullugui.__version__)
+
+    def aboutQtMethod(self):
+        QMessageBox.aboutQt(self, self.tr("About"))

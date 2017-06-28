@@ -19,3 +19,6 @@
 
 # Imports modules
 from .coreui import gonulluWindow
+
+# Defines version string
+__version__ = "1.0.dev0"

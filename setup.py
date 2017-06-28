@@ -21,6 +21,7 @@
 from setuptools import setup
 from os import listdir, system
 from distro import linux_distribution
+from gonullugui import __version__
 
 
 # Adds .qm files to langs list. In Pisi GNU/Linux, lrelease-qt5 is exist
@@ -54,10 +55,8 @@ else:
 
 # setuptools setup function
 setup(
-    name="Gonullu-gui",  # Because Gonullu's package name is "Gonullu" not
-                         # "gonullu", so naming "Gonullu-gui" instead of
-                         # "gonullu-gui" is more convenient.
-    version="1.0.dev0",
+    name="GonulluGUI",
+    version=__version__,
     packages=["gonullugui"],
     scripts=["bin/gonullu-gui", "bin/gonullu-gui-main"],
     # install_requires=[               # If possible, you should installing
