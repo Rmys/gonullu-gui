@@ -21,7 +21,7 @@
 from setuptools import setup
 from os import listdir, system
 from distro import linux_distribution
-from gonullugui import __version__
+from gonullugui.version import __version__
 
 
 # Adds .qm files to langs list. In Pisi GNU/Linux, lrelease-qt5 is exist

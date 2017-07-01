@@ -18,19 +18,19 @@
 #
 
 # Imports modules
-from PyQt5.QtWidgets import (QWidget, QGridLayout, QLabel, QLineEdit,
-                             QPushButton, QToolTip, QMessageBox)
-import gonullugui
+from PyQt5.QtWidgets import (QWidget, QMainWindow, QGridLayout, QLabel,
+                             QLineEdit, QPushButton, QToolTip, QMessageBox)
+from .version import __version__
 
 
-# Defines main program window class
+# Defines launching window class
 class gonulluWindow(QWidget):
-    def __init__(self):
+    def __init__(self, parent=None):
         super().__init__()
-        self.setWindowTitle(self.tr("Gonullu Graphical User Interface"))
+        self.setWindowTitle(self.tr("Launching Gonullu"))
         self.resize(320, 240)
 
-        memoryLabel = QLabel(self.tr("Memory Amount:"))
+        memoryLabel = QLabel(self.tr("Memory Percent:"))
         cpuLabel = QLabel(self.tr("Number of CPUs:"))
         emailLabel = QLabel(self.tr("E-Mail Address:"))
 
@@ -65,11 +65,22 @@ class gonulluWindow(QWidget):
         self.setLayout(gonulluWindowLayout)
 
     def launchMethod(self):
-        pass
+        self.mainWindow = gonulluWindow_2()
+        self.mainWindow.show()
+        self.close()
 
     def aboutMethod(self):
         QMessageBox.about(self, self.tr("About"),
-                          self.tr("Gonullu Graphical User Interface\n\nVersion ") + gonullugui.__version__)
+                          self.tr("Gonullu Graphical User Interface\n\nVersion ") + __version__)
 
     def aboutQtMethod(self):
         QMessageBox.aboutQt(self, self.tr("About"))
+
+
+# Defines main window class
+class gonulluWindow_2(QMainWindow):
+    def __init__(self, parent=None):
+        super().__init__()
+        self.setParent(parent)
+        self.setWindowTitle(self.tr("Gonullu GUI Main Window"))
+        self.resize(320, 240)

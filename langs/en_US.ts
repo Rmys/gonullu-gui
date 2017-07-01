@@ -18,12 +18,12 @@
     <message>
         <location filename="../gonullugui/coreui.py" line="30"/>
         <source>Gonullu Graphical User Interface</source>
-        <translation>Gonullu Graphical User Interface</translation>
+        <translation type="obsolete">Gonullu Graphical User Interface</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="33"/>
         <source>Memory Amount:</source>
-        <translation>Memory Amount:</translation>
+        <translation type="obsolete">Memory Amount:</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="35"/>
@@ -36,7 +36,7 @@
         <translation>Launch</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="75"/>
+        <location filename="../gonullugui/coreui.py" line="76"/>
         <source>About</source>
         <translation>About</translation>
     </message>
@@ -51,13 +51,31 @@
         <translation>Number of CPUs:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="71"/>
+        <location filename="../gonullugui/coreui.py" line="72"/>
         <source>Gonullu Graphical User Interface
 
 Version </source>
         <translation>Gonullu Graphical User Interface
 
 Version </translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="30"/>
+        <source>Launching Gonullu</source>
+        <translation>Launching Gonullu</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="33"/>
+        <source>Memory Percent:</source>
+        <translation>Memory Percent:</translation>
+    </message>
+</context>
+<context>
+    <name>gonulluWindow_2</name>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="83"/>
+        <source>Gonullu GUI Main Window</source>
+        <translation>Gonullu GUI Main Window</translation>
     </message>
 </context>
 </TS>

@@ -18,12 +18,12 @@
     <message>
         <location filename="../gonullugui/coreui.py" line="30"/>
         <source>Gonullu Graphical User Interface</source>
-        <translation>Gonullu Grafik Kullanıcı Arayüzü</translation>
+        <translation type="obsolete">Gonullu Grafik Kullanıcı Arayüzü</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="33"/>
         <source>Memory Amount:</source>
-        <translation>Bellek Miktârı:</translation>
+        <translation type="obsolete">Bellek Miktârı:</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="35"/>
@@ -36,7 +36,7 @@
         <translation>Başlat</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="75"/>
+        <location filename="../gonullugui/coreui.py" line="76"/>
         <source>About</source>
         <translation>Hakkında</translation>
     </message>
@@ -51,13 +51,31 @@
         <translation>CPU Sayısı:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="71"/>
+        <location filename="../gonullugui/coreui.py" line="72"/>
         <source>Gonullu Graphical User Interface
 
 Version </source>
         <translation>Gonullu Grafik Kullanıcı Arayüzü
 
 Sürüm </translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="30"/>
+        <source>Launching Gonullu</source>
+        <translation>Gonullu&apos;yu Başlat</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="33"/>
+        <source>Memory Percent:</source>
+        <translation>Bellek Yüzdesi:</translation>
+    </message>
+</context>
+<context>
+    <name>gonulluWindow_2</name>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="83"/>
+        <source>Gonullu GUI Main Window</source>
+        <translation>Gonullu GKA Ana Pencere</translation>
     </message>
 </context>
 </TS>
