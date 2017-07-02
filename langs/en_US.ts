@@ -16,42 +16,32 @@
 <context>
     <name>gonulluWindow</name>
     <message>
-        <location filename="../gonullugui/coreui.py" line="30"/>
-        <source>Gonullu Graphical User Interface</source>
-        <translation type="obsolete">Gonullu Graphical User Interface</translation>
-    </message>
-    <message>
-        <location filename="../gonullugui/coreui.py" line="33"/>
-        <source>Memory Amount:</source>
-        <translation type="obsolete">Memory Amount:</translation>
-    </message>
-    <message>
-        <location filename="../gonullugui/coreui.py" line="35"/>
+        <location filename="../gonullugui/coreui.py" line="36"/>
         <source>E-Mail Address:</source>
         <translation>E-Mail Address:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="41"/>
+        <location filename="../gonullugui/coreui.py" line="42"/>
         <source>Launch</source>
         <translation>Launch</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="76"/>
+        <location filename="../gonullugui/coreui.py" line="85"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="43"/>
+        <location filename="../gonullugui/coreui.py" line="44"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="34"/>
+        <location filename="../gonullugui/coreui.py" line="35"/>
         <source>Number of CPUs:</source>
         <translation>Number of CPUs:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="72"/>
+        <location filename="../gonullugui/coreui.py" line="81"/>
         <source>Gonullu Graphical User Interface
 
 Version </source>
@@ -60,12 +50,12 @@ Version </source>
 Version </translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="30"/>
+        <location filename="../gonullugui/coreui.py" line="31"/>
         <source>Launching Gonullu</source>
         <translation>Launching Gonullu</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="33"/>
+        <location filename="../gonullugui/coreui.py" line="34"/>
         <source>Memory Percent:</source>
         <translation>Memory Percent:</translation>
     </message>
@@ -73,9 +63,45 @@ Version </translation>
 <context>
     <name>gonulluWindow_2</name>
     <message>
-        <location filename="../gonullugui/coreui.py" line="83"/>
+        <location filename="../gonullugui/coreui.py" line="102"/>
         <source>Gonullu GUI Main Window</source>
         <translation>Gonullu GUI Main Window</translation>
+    </message>
+</context>
+<context>
+    <name>self.MainWindow</name>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="88"/>
+        <source>Ready</source>
+        <translation type="obsolete">Ready</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="91"/>
+        <source>Gonullu Graphical User Interface</source>
+        <translation type="obsolete">Gonullu Graphical User Interface</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="91"/>
+        <source>Gonullu failed to start.</source>
+        <translation type="obsolete">Gonullu failed to start.</translation>
+    </message>
+</context>
+<context>
+    <name>self.mainWindow</name>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="88"/>
+        <source>Ready</source>
+        <translation>Ready</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="91"/>
+        <source>Gonullu Graphical User Interface</source>
+        <translation>Gonullu Graphical User Interface</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="91"/>
+        <source>Gonullu failed to start.</source>
+        <translation>Gonullu failed to start.</translation>
     </message>
 </context>
 </TS>
