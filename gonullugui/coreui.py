@@ -20,7 +20,8 @@
 # Imports modules
 from PyQt5.QtWidgets import (QWidget, QMainWindow, QGridLayout, QLabel,
                              QLineEdit, QPushButton, QToolTip, QMessageBox)
-from PyQt5.QtCore import QProcess, QIODevice
+from PyQt5.QtCore import QProcess, QIODevice, QT_VERSION_STR
+from pkg_resources import parse_version
 from .version import __version__
 
 launching = QProcess()
@@ -72,11 +73,14 @@ class gonulluWindow(QWidget):
         self.close()
 
         launchCommand = "gonullu"
-        launchCommand += " -m " + self.memoryEdit.text() + " -c " + self.cpuEdit.text() # + " -e " + self.emailEdit.text()
-        
+        launchCommand += " -m " + self.memoryEdit.text() + " -c " + self.cpuEdit.text()
+        if self.emailEdit.text() != "":
+            launchCommand += " -e " + self.emailEdit.text()
+
         launching.start(launchCommand, mode=QIODevice.ReadOnly)
         launching.started.connect(self.launchOk)
-        #launching.errorOccurred.connect(self.launchError)
+        if parse_version(QT_VERSION_STR) >= parse_version("5.6"):
+            launching.errorOccurred.connect(self.launchError)
 
     def aboutMethod(self):
         QMessageBox.about(self, self.tr("About"),
@@ -87,9 +91,9 @@ class gonulluWindow(QWidget):
 
     def launchOk(self):
         self.mainWindow.statusBar().showMessage(self.mainWindow.tr("Ready"))
-        
+
     def launchError(self):
-        QMessgaeBox().critical(self.mainWindow,
+        QMessageBox().critical(self.mainWindow,
                                self.mainWindow.tr("Gonullu Graphical User Interface"),
                                self.mainWindow.tr("Gonullu failed to start."),
                                QMessageBox.Ok)
@@ -101,4 +105,4 @@ class gonulluWindow_2(QMainWindow):
         super().__init__()
         self.setParent(parent)
         self.setWindowTitle(self.tr("Gonullu GUI Main Window"))
-        self.resize(320, 240)
+        self.resize(640, 480)
