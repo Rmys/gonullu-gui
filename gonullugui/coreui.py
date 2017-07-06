@@ -19,7 +19,8 @@
 
 # Imports modules
 from PyQt5.QtWidgets import (QWidget, QMainWindow, QGridLayout, QLabel,
-                             QLineEdit, QPushButton, QToolTip, QMessageBox)
+                             QLineEdit, QPushButton, QToolTip, QMessageBox,
+                             QTextEdit)
 from PyQt5.QtCore import QProcess, QIODevice, QT_VERSION_STR
 from pkg_resources import parse_version
 from .version import __version__
@@ -78,9 +79,9 @@ class gonulluWindow(QWidget):
             launchCommand += " -e " + self.emailEdit.text()
 
         launching.start(launchCommand, mode=QIODevice.ReadOnly)
-        launching.started.connect(self.launchOk)
+        launching.started.connect(self.mainWindow.launchOk)
         if parse_version(QT_VERSION_STR) >= parse_version("5.6"):
-            launching.errorOccurred.connect(self.launchError)
+            launching.errorOccurred.connect(self.mainWindow.launchError)
 
     def aboutMethod(self):
         QMessageBox.about(self, self.tr("About"),
@@ -88,15 +89,6 @@ class gonulluWindow(QWidget):
 
     def aboutQtMethod(self):
         QMessageBox.aboutQt(self, self.tr("About"))
-
-    def launchOk(self):
-        self.mainWindow.statusBar().showMessage(self.mainWindow.tr("Ready"))
-
-    def launchError(self):
-        QMessageBox().critical(self.mainWindow,
-                               self.mainWindow.tr("Gonullu Graphical User Interface"),
-                               self.mainWindow.tr("Gonullu failed to start."),
-                               QMessageBox.Ok)
 
 
 # Defines main window class
@@ -106,3 +98,29 @@ class gonulluWindow_2(QMainWindow):
         self.setParent(parent)
         self.setWindowTitle(self.tr("Gonullu GUI Main Window"))
         self.resize(640, 480)
+
+        self.stdoutArea = QTextEdit()
+        self.stdoutArea.setReadOnly(True)
+        self.setCentralWidget(self.stdoutArea)
+
+    def launchOk(self):
+        self.statusBar().showMessage(self.tr("Ready"))
+        launching.readyReadStandardOutput.connect(self.readFromStdout)
+        launching.readyReadStandardError.connect(self.readFromStderr)
+
+    def launchError(self):
+        QMessageBox().critical(self,
+                               self.tr("Gonullu Graphical User Interface"),
+                               self.tr("Gonullu failed to start."),
+                               QMessageBox.Ok)
+
+    def readFromStdout(self):
+        data = launching.readAllStandardOutput()
+        self.stdoutArea.append(str(data, encoding="utf-8"))
+
+    def readFromStderr(self):
+        data = launching.readAllStandardError()
+        QMessageBox().information(self,
+                                  self.tr("Gonullu Graphical User Interface"),
+                                  str(data, encoding="utf-8"),
+                                  QMessageBox.Ok)
