@@ -18,34 +18,63 @@
 #
 
 # Imports modules
-from PyQt5.QtWidgets import (QWidget, QMainWindow, QGridLayout, QLabel,
-                             QLineEdit, QPushButton, QToolTip, QMessageBox,
-                             QTextEdit)
-from PyQt5.QtCore import QProcess, QIODevice, QT_VERSION_STR
+from PyQt5.QtWidgets import (QWidget, QGridLayout, QLabel, QLineEdit,
+                             QMainWindow, QMessageBox, QPushButton, QTextEdit,
+                             QToolTip)
+from PyQt5.QtCore import QIODevice, QProcess, QT_VERSION_STR
 from pkg_resources import parse_version
 from .version import __version__
 
+# Defines global QProcess instance
 launching = QProcess()
+
 
 # Defines launching window class
 class gonulluWindow(QWidget):
     def __init__(self, parent=None):
         super().__init__()
+
+        # Sets window title of launching window and resizes this window
         self.setWindowTitle(self.tr("Launching Gonullu"))
         self.resize(320, 240)
 
+        # Defines labels of launching window and sets tooltips for them
         memoryLabel = QLabel(self.tr("Memory Percent:"))
+        memoryLabel.setToolTip(
+            self.tr("Reserve memory as percent of full memory for Gonullu"))
+
         cpuLabel = QLabel(self.tr("Number of CPUs:"))
+        cpuLabel.setToolTip(self.tr("Reserve number of CPUs for Gonullu"))
+
         emailLabel = QLabel(self.tr("E-Mail Address:"))
+        emailLabel.setToolTip(
+            self.tr("Enter e-mail adress for Gonullu. The address must be "
+                    "authorized."))
 
+        # Defines entering areas of launching window and sets tooltips for them
         self.memoryEdit = QLineEdit()
+        self.memoryEdit.setToolTip(
+            self.tr("Reserve memory as percent of full memory for Gonullu"))
+
         self.cpuEdit = QLineEdit()
+        self.cpuEdit.setToolTip(self.tr("Reserve number of CPUs for Gonullu"))
+
         self.emailEdit = QLineEdit()
+        self.emailEdit.setToolTip(
+            self.tr("Enter e-mail adress for Gonullu. The address must be "
+                    "authorized."))
 
+        # Defines buttons of launching window and sets tooltips for them
         launchButton = QPushButton(self.tr("Launch"))
-        aboutButton = QPushButton(self.tr("About"))
-        aboutQtButton = QPushButton(self.tr("About Qt"))
+        launchButton.setToolTip(self.tr("Launch Gonullu with main window"))
 
+        aboutButton = QPushButton(self.tr("About"))
+        aboutButton.setToolTip(self.tr("About Gonullu GUI"))
+
+        aboutQtButton = QPushButton(self.tr("About Qt"))
+        aboutQtButton.setToolTip(self.tr("About Qt"))
+
+        # Sets layout of launching window and add widgets to the layout
         gonulluWindowLayout = QGridLayout()
         gonulluWindowLayout.setSpacing(10)
 
@@ -62,32 +91,48 @@ class gonulluWindow(QWidget):
         gonulluWindowLayout.addWidget(aboutButton, 3, 1)
         gonulluWindowLayout.addWidget(aboutQtButton, 3, 2)
 
-        launchButton.clicked.connect(self.launchMethod)
-        aboutButton.clicked.connect(self.aboutMethod)
-        aboutQtButton.clicked.connect(self.aboutQtMethod)
-
         self.setLayout(gonulluWindowLayout)
 
-    def launchMethod(self):
+        # Connects signals to the slots
+        launchButton.clicked.connect(self.launchSlot)
+        aboutButton.clicked.connect(self.aboutSlot)
+        aboutQtButton.clicked.connect(self.aboutQtSlot)
+
+    # Defines launching slot
+    def launchSlot(self):
+        # Instantiation of main window
         self.mainWindow = gonulluWindow_2()
+
+        # Shows main window and closes launching window
         self.mainWindow.show()
         self.close()
 
+        # Makes running Gonullu command
         launchCommand = "gonullu"
-        launchCommand += " -m " + self.memoryEdit.text() + " -c " + self.cpuEdit.text()
+        launchCommand += (" -m " + self.memoryEdit.text() +
+                          " -c " + self.cpuEdit.text())
         if self.emailEdit.text() != "":
             launchCommand += " -e " + self.emailEdit.text()
 
+        # Launches Gonullu
         launching.start(launchCommand, mode=QIODevice.ReadOnly)
+
+        # Connects successful launching signal to a slot
         launching.started.connect(self.mainWindow.launchOk)
+
+        # Connects unsuccessful launching signal to a slot. The signal requires
+        # Qt 5.6 and above, but Ubuntu's official xenial Qt packages is 5.5.x
         if parse_version(QT_VERSION_STR) >= parse_version("5.6"):
             launching.errorOccurred.connect(self.mainWindow.launchError)
 
-    def aboutMethod(self):
+    # Defines showing about message box slot
+    def aboutSlot(self):
         QMessageBox.about(self, self.tr("About"),
-                          self.tr("Gonullu Graphical User Interface\n\nVersion ") + __version__)
+                          self.tr("Gonullu Graphical User Interface"
+                                  "\n\nVersion ") + __version__)
 
-    def aboutQtMethod(self):
+    # Defines showing about Qt message box slot
+    def aboutQtSlot(self):
         QMessageBox.aboutQt(self, self.tr("About"))
 
 
@@ -95,29 +140,47 @@ class gonulluWindow(QWidget):
 class gonulluWindow_2(QMainWindow):
     def __init__(self, parent=None):
         super().__init__()
+
+        # Sets parent of man window. The parent is none.
         self.setParent(parent)
+
+        # Sets window title of main window and resizes this window
         self.setWindowTitle(self.tr("Gonullu GUI Main Window"))
         self.resize(640, 480)
 
+        # Defines the area standart output redirects here of main window, sets
+        # tooltip for the area and set the area to central widget of main
+        # window. The area is read only.
         self.stdoutArea = QTextEdit()
         self.stdoutArea.setReadOnly(True)
+        self.stdoutArea.setToolTip(
+            self.tr("Standart output is directed here, standart error output "
+                    "is shown as message box."))
         self.setCentralWidget(self.stdoutArea)
 
+    # Defines successful launching slot
     def launchOk(self):
-        self.statusBar().showMessage(self.tr("Ready"))
+        # Sets status bar message of main window
+        self.statusBar().showMessage(self.tr("Gonullu is running..."))
+
+        # Connects making output signals to reading output slots
         launching.readyReadStandardOutput.connect(self.readFromStdout)
         launching.readyReadStandardError.connect(self.readFromStderr)
 
+    # Defines unsuccessful launching slot
     def launchError(self):
+        # Shows unsuccessful launching error as message box
         QMessageBox().critical(self,
                                self.tr("Gonullu Graphical User Interface"),
                                self.tr("Gonullu failed to start."),
                                QMessageBox.Ok)
 
+    # Defines reading standart output slot
     def readFromStdout(self):
         data = launching.readAllStandardOutput()
         self.stdoutArea.append(str(data, encoding="utf-8"))
 
+    # Defines reading standart error output slot
     def readFromStderr(self):
         data = launching.readAllStandardError()
         QMessageBox().information(self,
