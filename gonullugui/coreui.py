@@ -141,7 +141,7 @@ class gonulluWindow_2(QMainWindow):
     def __init__(self, parent=None):
         super().__init__()
 
-        # Sets parent of man window. The parent is none.
+        # Sets parent of main window. The parent is none.
         self.setParent(parent)
 
         # Sets window title of main window and resizes this window
