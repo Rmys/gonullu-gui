@@ -21,7 +21,7 @@
 from PyQt5.QtWidgets import (QWidget, QGridLayout, QLabel, QLineEdit,
                              QMainWindow, QMessageBox, QPushButton, QTextEdit,
                              QToolTip)
-from PyQt5.QtCore import QIODevice, QProcess, QT_VERSION_STR
+from PyQt5.QtCore import QDir, QFile, QIODevice, QProcess, QT_VERSION_STR
 from pkg_resources import parse_version
 from .version import __version__
 
@@ -154,9 +154,39 @@ class gonulluWindow_2(QMainWindow):
         self.stdoutArea = QTextEdit()
         self.stdoutArea.setReadOnly(True)
         self.stdoutArea.setToolTip(
-            self.tr("Standart output is directed here, standart error output "
-                    "is shown as message box."))
+            self.tr("Standart output is directed here and /var/log/stdout file"
+                    ", standart error output is shown as message box and "
+                    "is directed to /var/log/stderr file."))
         self.setCentralWidget(self.stdoutArea)
+
+        # Makes directory standard output and standard error logs are
+        # written in
+        logsDir = QDir("/var/log/")
+        createDir = logsDir.mkdir("gonullu-gui")
+
+        # Opens standard output log file
+        self.stdoutFile = QFile("/var/log/gonullu-gui/stdout")
+        stdoutFileOpen = self.stdoutFile.open(
+            QIODevice.WriteOnly | QIODevice.Text)
+        if (not stdoutFileOpen):
+            QMessageBox().information(None,
+                                      self.tr("Gonullu Graphical User "
+                                              "Interface"),
+                                      self.tr("Failed to open standart output "
+                                              "log file."),
+                                      QMessageBox.Ok)
+
+        # Opens standard error log file
+        self.stderrFile = QFile("/var/log/gonullu-gui/stderr")
+        stderrFileOpen = self.stderrFile.open(
+            QIODevice.WriteOnly | QIODevice.Text)
+        if (not stderrFileOpen):
+            QMessageBox().information(None,
+                                      self.tr("Gonullu Graphical User "
+                                              "Interface"),
+                                      self.tr("Failed to open standart error "
+                                              "log file."),
+                                      QMessageBox.Ok)
 
     # Defines successful launching slot
     def launchOk(self):
@@ -180,6 +210,18 @@ class gonulluWindow_2(QMainWindow):
         data = launching.readAllStandardOutput()
         self.stdoutArea.append(str(data, encoding="utf-8"))
 
+        # Writes standard output data to buffer
+        writingToStdoutBuffer = self.stdoutFile.write(data)
+        if (writingToStdoutBuffer == -1):
+            self.statusBar().showMessage(
+                self.tr("Failed to write standard output log to buffer."))
+
+        # Flushes standard output data to standard output log file
+        flushingToStdoutFile = self.stdoutFile.flush()
+        if (not flushingToStdoutFile):
+            self.statusBar().showMessage(
+                self.tr("Failed to flush standard output log to file."))
+
     # Defines reading standart error output slot
     def readFromStderr(self):
         data = launching.readAllStandardError()
@@ -187,3 +229,50 @@ class gonulluWindow_2(QMainWindow):
                                   self.tr("Gonullu Graphical User Interface"),
                                   str(data, encoding="utf-8"),
                                   QMessageBox.Ok)
+
+        # Writes standard error data to buffer
+        writingToStderrBuffer = self.stderrFile.write(data)
+        if (writingToStderrBuffer == -1):
+            self.statusBar().showMessage(
+                self.tr("Failed to write standard error log to buffer."))
+
+        # Flushes standard error data to standard output log file
+        flushingToStderrFile = self.stderrFile.flush()
+        if (not flushingToStderrFile):
+            self.statusBar().showMessage(
+                self.tr("Failed to flush standard error log to file."))
+
+    # Defines closing application event
+    def closeEvent(self, event):
+        # Writes line ending character to buffer
+        writingLastLineToStdoutBuffer = self.stdoutFile.write(b"\n")
+        if (writingLastLineToStdoutBuffer == -1):
+            self.statusBar().showMessage(
+                self.tr("Failed to write standard output log to buffer."))
+
+        # Flushes line ending character to standard output log file
+        flushingLastLineToStdoutFile = self.stdoutFile.flush()
+        if (not flushingLastLineToStdoutFile):
+            self.statusBar().showMessage(
+                self.tr("Failed to flush standard output log to file."))
+
+        # Closes standard output file
+        self.stdoutFile.close()
+
+        # Writes line ending character to buffer
+        writingLastLineToStderrBuffer = self.stderrFile.write(b"\n")
+        if (writingLastLineToStderrBuffer == -1):
+            self.statusBar().showMessage(
+                self.tr("Failed to write standard error log to buffer."))
+
+        # Flushes line ending character to standard error log file
+        flushingLastLineToStderrFile = self.stderrFile.flush()
+        if (not flushingLastLineToStderrFile):
+            self.statusBar().showMessage(
+                self.tr("Failed to flush standard error log to file."))
+
+        # Closes standard error file
+        self.stderrFile.close()
+
+        # Closes main window
+        event.accept()

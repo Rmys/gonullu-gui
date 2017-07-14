@@ -94,24 +94,54 @@ Sürüm </translation>
         <translation>Gonullu GKA Ana Pencere</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="186"/>
+        <location filename="../gonullugui/coreui.py" line="222"/>
         <source>Gonullu Graphical User Interface</source>
         <translation>Gonullu Grafik Kullanıcı Arayüzü</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="173"/>
+        <location filename="../gonullugui/coreui.py" line="199"/>
         <source>Gonullu failed to start.</source>
         <translation>Gonullu başlatılamadı.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="156"/>
-        <source>Standart output is directed here, standart error output is shown as message box.</source>
-        <translation>Standart çıktı buraya yönlendirilir, standart hatâ çıktısı ileti kutusu olarak gösterilir.</translation>
-    </message>
-    <message>
-        <location filename="../gonullugui/coreui.py" line="164"/>
+        <location filename="../gonullugui/coreui.py" line="190"/>
         <source>Gonullu is running...</source>
         <translation>Gonullu çalışıyor...</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="169"/>
+        <source>Failed to open standart output log file.</source>
+        <translation>Standart çıktı kayıt dosyası açma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="180"/>
+        <source>Failed to open standart error log file.</source>
+        <translation>Standart hatâ kayıt dosyası açma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="240"/>
+        <source>Failed to write standard output log to buffer.</source>
+        <translation>Standart çıktı kaydını tampona yazma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="245"/>
+        <source>Failed to flush standard output log to file.</source>
+        <translation>Standart çıktı kaydını dosyaya yazma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="252"/>
+        <source>Failed to write standard error log to buffer.</source>
+        <translation>Standart hatâ kaydını tampona yazma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="257"/>
+        <source>Failed to flush standard error log to file.</source>
+        <translation>Standart hatâ kaydını dosyaya yazma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="156"/>
+        <source>Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file.</source>
+        <translation>Standart çıktı buraya ve /var/log/stdout dosyasına yönlendirilir, standart hatâ çıktısı ileti kutusu olarak gösterilir ve /var/log/stderr dosyasına yönlendirilir.</translation>
     </message>
 </context>
 </TS>
