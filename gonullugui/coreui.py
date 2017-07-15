@@ -208,7 +208,29 @@ class gonulluWindow_2(QMainWindow):
     # Defines reading standart output slot
     def readFromStdout(self):
         data = launching.readAllStandardOutput()
-        self.stdoutArea.append(str(data, encoding="utf-8"))
+        strdata = str(bytes(data), encoding="utf-8")
+        strdatasplitted = strdata.split()
+        print(strdatasplitted)  # for debugging purposes
+        if (strdata[-22:] == "yeni paket bekleniyor."):
+            self.stdoutArea.append(
+                self.tr("Waiting for new package for {} seconds...".format(strdatasplitted[2])))
+        elif (strdata[-15:] == "saniyede bitti."):
+            self.stdoutArea.append(
+                self.tr("Finished building {} package in {} seconds.".format(strdatasplitted[4], strdatasplitted[7])))
+        elif (strdata[-26:] == "paketi için devam ediyor."):
+            self.stdoutArea.append(
+                self.tr("Building {} package for {} seconds...".format(strdatasplitted[7], strdatasplitted[2])))
+        elif (strdata[-21:] == "imajı güncelleniyor"):
+            self.stdoutArea.append(
+                self.tr("Updating {} image...".format(strdatasplitted[2])))
+        elif (strdata[-31:] == "İmaj son sürüme güncellendi"):
+            self.stdoutArea.append(
+                self.tr("The image updated to last version."))
+        
+        
+        
+        else:
+            self.stdoutArea.append(str(data, encoding="utf-8"))
 
         # Writes standard output data to buffer
         writingToStdoutBuffer = self.stdoutFile.write(data)
