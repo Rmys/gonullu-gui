@@ -209,8 +209,12 @@ class gonulluWindow_2(QMainWindow):
     def readFromStdout(self):
         data = launching.readAllStandardOutput()
         strdata = str(bytes(data), encoding="utf-8")
+
+        if strdata.endswith(("\r", "\n")):
+            strdata = strdata[:-1]
+
         strdatasplitted = strdata.split()
-        print(strdatasplitted)  # for debugging purposes
+
         if (strdata[-22:] == "yeni paket bekleniyor."):
             self.stdoutArea.append(
                 self.tr("Waiting for new package for {} seconds...".format(strdatasplitted[2])))
@@ -226,10 +230,8 @@ class gonulluWindow_2(QMainWindow):
         elif (strdata[-31:] == "İmaj son sürüme güncellendi"):
             self.stdoutArea.append(
                 self.tr("The image updated to last version."))
-        
-        
-        
         else:
+            # temporary, nothing to be appended
             self.stdoutArea.append(str(data, encoding="utf-8"))
 
         # Writes standard output data to buffer
