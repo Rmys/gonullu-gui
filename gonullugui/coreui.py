@@ -213,25 +213,91 @@ class gonulluWindow_2(QMainWindow):
         if strdata.endswith(("\r", "\n")):
             strdata = strdata[:-1]
 
+        if strdata.startswith(("\r", "\n")):
+            strdata = strdata[1:]
+
         strdatasplitted = strdata.split()
+
+        # For debugging purposes
+        print("-----------------------------------------------------")
+        print(strdata)
+        print("-----------------------------------------------------")
 
         if (strdata[-22:] == "yeni paket bekleniyor."):
             self.stdoutArea.append(
                 self.tr("Waiting for new package for {} seconds...".format(strdatasplitted[2])))
+
         elif (strdata[-15:] == "saniyede bitti."):
             self.stdoutArea.append(
                 self.tr("Finished building {} package in {} seconds.".format(strdatasplitted[4], strdatasplitted[7])))
-        elif (strdata[-26:] == "paketi için devam ediyor."):
+
+        elif (strdata[-25:] == "paketi için devam ediyor."):
             self.stdoutArea.append(
                 self.tr("Building {} package for {} seconds...".format(strdatasplitted[7], strdatasplitted[2])))
-        elif (strdata[-21:] == "imajı güncelleniyor"):
+
+        elif (strdata[-30:] == "docker servisini çalıştırınız!"):
+            self.stdoutArea.append(
+                self.tr("Please start docker service before."))
+
+        elif (strdata[:31] == "  [x] Hata: Bilinmeyen bir hata"):
+            self.stdoutArea.append(
+                self.tr("Unknown error: ") + strdata[49:-35])
+            self.stdoutArea.append(
+                self.tr("Exiting Gonullu..."))
+
+        elif (strdata[-21:] == "Programdan çıkılıyor."):
+            self.stdoutArea.append(
+                self.tr("Exiting Gonullu..."))
+
+        elif (strdata[-19:] == "imajı güncelleniyor"):
             self.stdoutArea.append(
                 self.tr("Updating {} image...".format(strdatasplitted[2])))
-        elif (strdata[-31:] == "İmaj son sürüme güncellendi"):
+
+        elif (strdata[-28:] == "İmaj son sürüme güncellendi"):
             self.stdoutArea.append(
-                self.tr("The image updated to last version."))
+                self.tr("The image has been updated to last version."))
+
+        elif (strdata[-28:] == "tekrar bağlanmaya çalışıyor!"):
+            self.stdoutArea.append(
+                self.tr("Couldn't access the server for {} seconds, reconnecting...".format(strdatasplitted[3])))
+
+        elif (strdata[-32:] == "tekrar gönderilmeye çalışılacak."):
+            self.stdoutArea.append(
+                self.tr("{} file will be resent.".format(strdatasplitted[2])))
+
+        elif (strdata[-21:] == "dosyası gönderiliyor."):
+            self.stdoutArea.append(
+                self.tr("{} file is being sent...".format(strdatasplitted[2])))
+
+        elif (strdata[-30:] == "dosyası başarı ile gönderildi."):
+            self.stdoutArea.append(
+                self.tr("{} file has been sent successfully.".format(strdatasplitted[2])))
+
+        elif (strdata[-22:] == "dosyası gönderilemedi!"):
+            self.stdoutArea.append(
+                self.tr("{} file couldn't be sent.".format(strdatasplitted[2])))
+
+        elif (strdata[:30] == "Yeni paket bulundu"):
+            self.stdoutArea.append(
+                self.tr("New package found: {}".format(strdatasplitted[7])))
+
+        elif (strdata[-24:] == "adresiniz yetkili değil!"):
+            self.stdoutArea.append(
+                self.tr("Entered e-mail address isn't authorized."))
+
+        elif (strdata[-24:] == "Docker imajı bulunamadı!"):
+            self.stdoutArea.append(
+                self.tr("The Docker image couldn't be found."))
+
+        elif (strdata[-32:] == "Tanımlı olmayan bir hata oluştu!"):
+            self.stdoutArea.append(
+                self.tr("A nondefined error has occured."))
+
+        elif (strdata[-18:] == "dosyası işlenemedi"):
+            self.stdoutArea.append(
+                self.tr("{} file couldn't be handled.".format(strdatasplitted[2])))
+
         else:
-            # temporary, nothing to be appended
             self.stdoutArea.append(str(data, encoding="utf-8"))
 
         # Writes standard output data to buffer
