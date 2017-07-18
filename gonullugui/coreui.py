@@ -205,35 +205,43 @@ class gonulluWindow_2(QMainWindow):
                                self.tr("Gonullu failed to start."),
                                QMessageBox.Ok)
 
-    # Defines reading standart output slot
+    # Defines reading standard output slot
     def readFromStdout(self):
+        # Gets standard output data and converts it to string
         data = launching.readAllStandardOutput()
         strdata = str(bytes(data), encoding="utf-8")
 
+        # Remove trailing line ending of the data
         if strdata.endswith(("\r", "\n")):
             strdata = strdata[:-1]
 
+        # Remove leading line ending of the data
         if strdata.startswith(("\r", "\n")):
             strdata = strdata[1:]
 
+        # Break the data at spaces
         strdatasplitted = strdata.split()
 
-        # For debugging purposes
+        # For debugging purposes, temporary
         print("-----------------------------------------------------")
-        print(strdata)
+        print(repr(strdata))
         print("-----------------------------------------------------")
+
+        ########################################################
+        # Writes to standart output area according to the data #
+        ########################################################
 
         if (strdata[-22:] == "yeni paket bekleniyor."):
             self.stdoutArea.append(
-                self.tr("Waiting for new package for {} seconds...".format(strdatasplitted[2])))
+                self.tr("Waiting for new package for {0} seconds...").format(strdatasplitted[2]))
 
         elif (strdata[-15:] == "saniyede bitti."):
             self.stdoutArea.append(
-                self.tr("Finished building {} package in {} seconds.".format(strdatasplitted[4], strdatasplitted[7])))
+                self.tr("Finished building {0} package in {1} seconds.").format(strdatasplitted[4], strdatasplitted[7]))
 
         elif (strdata[-25:] == "paketi için devam ediyor."):
             self.stdoutArea.append(
-                self.tr("Building {} package for {} seconds...".format(strdatasplitted[7], strdatasplitted[2])))
+                self.tr("Building {0} package for {1} seconds...").format(strdatasplitted[7], strdatasplitted[2]))
 
         elif (strdata[-30:] == "docker servisini çalıştırınız!"):
             self.stdoutArea.append(
@@ -251,7 +259,7 @@ class gonulluWindow_2(QMainWindow):
 
         elif (strdata[-19:] == "imajı güncelleniyor"):
             self.stdoutArea.append(
-                self.tr("Updating {} image...".format(strdatasplitted[2])))
+                self.tr("Updating {0} image...").format(strdatasplitted[2]))
 
         elif (strdata[-28:] == "İmaj son sürüme güncellendi"):
             self.stdoutArea.append(
@@ -259,27 +267,27 @@ class gonulluWindow_2(QMainWindow):
 
         elif (strdata[-28:] == "tekrar bağlanmaya çalışıyor!"):
             self.stdoutArea.append(
-                self.tr("Couldn't access the server for {} seconds, reconnecting...".format(strdatasplitted[3])))
+                self.tr("Couldn't access the server for {0} seconds, reconnecting...").format(strdatasplitted[3]))
 
         elif (strdata[-32:] == "tekrar gönderilmeye çalışılacak."):
             self.stdoutArea.append(
-                self.tr("{} file will be resent.".format(strdatasplitted[2])))
+                self.tr("{0} file will be resent.").format(strdatasplitted[2]))
 
         elif (strdata[-21:] == "dosyası gönderiliyor."):
             self.stdoutArea.append(
-                self.tr("{} file is being sent...".format(strdatasplitted[2])))
+                self.tr("{0} file is being sent...").format(strdatasplitted[2]))
 
         elif (strdata[-30:] == "dosyası başarı ile gönderildi."):
             self.stdoutArea.append(
-                self.tr("{} file has been sent successfully.".format(strdatasplitted[2])))
+                self.tr("{0} file has been sent successfully.").format(strdatasplitted[2]))
 
         elif (strdata[-22:] == "dosyası gönderilemedi!"):
             self.stdoutArea.append(
-                self.tr("{} file couldn't be sent.".format(strdatasplitted[2])))
+                self.tr("{0} file couldn't be sent.").format(strdatasplitted[2]))
 
-        elif (strdata[:30] == "Yeni paket bulundu"):
+        elif (strdata[:31] == "  [*] Bilgi: Yeni paket bulundu"):
             self.stdoutArea.append(
-                self.tr("New package found: {}".format(strdatasplitted[7])))
+                self.tr("New package found: {0}").format(strdatasplitted[7]))
 
         elif (strdata[-24:] == "adresiniz yetkili değil!"):
             self.stdoutArea.append(
@@ -295,7 +303,15 @@ class gonulluWindow_2(QMainWindow):
 
         elif (strdata[-18:] == "dosyası işlenemedi"):
             self.stdoutArea.append(
-                self.tr("{} file couldn't be handled.".format(strdatasplitted[2])))
+                self.tr("{0} file couldn't be handled.").format(strdatasplitted[2]))
+
+        elif (strdata[:9] == "Namespace"):
+            strdatasplitted = strdata.split(", ")
+            self.stdoutArea.append(
+                self.tr("Namespace:\n    cpu_set={0}\n    email={1}\n    job={2}\n    memory_limit={3}\n    usage={4}").format(strdatasplitted[0].split("=")[1], strdatasplitted[1].split("=")[1], strdatasplitted[2].split("=")[1], strdatasplitted[3].split("=")[1], strdatasplitted[4].split("=")[1][:-1]))
+
+        elif (strdata == ""):
+            pass
 
         else:
             self.stdoutArea.append(str(data, encoding="utf-8"))
