@@ -1,4 +1,6 @@
 #
+#  Gonullu GUI setup script
+#
 #  Copyright 2017 Erdem Ersoy (erdemersoy@live.com)
 #
 #  This program is free software; you can redistribute it and/or modify

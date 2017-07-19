@@ -1,4 +1,6 @@
 #
+#  Gonullu GUI core module
+#
 #  Copyright 2017 Erdem Ersoy (erdemersoy@live.com)
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -18,16 +20,16 @@
 #
 
 # Imports modules
+from PyQt5.QtCore import QDir, QFile, QIODevice, QProcess, QT_VERSION_STR
+from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import (QWidget, QGridLayout, QLabel, QLineEdit,
                              QMainWindow, QMessageBox, QPushButton, QTextEdit,
                              QToolTip)
-from PyQt5.QtCore import QDir, QFile, QIODevice, QProcess, QT_VERSION_STR
 from pkg_resources import parse_version
 from .version import __version__
 
 # Defines global QProcess instance
 launching = QProcess()
-
 
 # Defines launching window class
 class gonulluWindow(QWidget):
@@ -36,7 +38,7 @@ class gonulluWindow(QWidget):
 
         # Sets window title of launching window and resizes this window
         self.setWindowTitle(self.tr("Launching Gonullu"))
-        self.resize(320, 240)
+        self.setFixedSize(360, 240)
 
         # Defines labels of launching window and sets tooltips for them
         memoryLabel = QLabel(self.tr("Memory Percent:"))
@@ -156,8 +158,13 @@ class gonulluWindow_2(QMainWindow):
         self.stdoutArea.setToolTip(
             self.tr("Standart output is directed here and /var/log/stdout file"
                     ", standart error output is shown as message box and "
-                    "is directed to /var/log/stderr file."))
+                    "is directed to /var/log/stderr file. Success messages "
+                    "are green, warning messages are orange, error messages are"
+                    " red."))
         self.setCentralWidget(self.stdoutArea)
+        
+        # Stores QTextEdit text color determined by theme
+        self.themeTextEditColor = self.stdoutArea.textColor()
 
         # Makes directory standard output and standard error logs are
         # written in
@@ -226,6 +233,19 @@ class gonulluWindow_2(QMainWindow):
         print("-----------------------------------------------------")
         print(repr(strdata))
         print("-----------------------------------------------------")
+
+        ###############################################################
+        # Select standart output area text coloraccording to the data #
+        ###############################################################
+        
+        if (strdata[:12] == "  [x] Hata: "):
+            self.stdoutArea.setTextColor(QColor("#FF0000"))
+
+        elif (strdata[:13] == "  [!] Uyarı: "):
+            self.stdoutArea.setTextColor(QColor("#FFA500"))
+
+        elif (strdata[:16] == "  [+] Başarılı: "):
+            self.stdoutArea.setTextColor(QColor("#008000"))
 
         ########################################################
         # Writes to standart output area according to the data #
@@ -315,6 +335,9 @@ class gonulluWindow_2(QMainWindow):
 
         else:
             self.stdoutArea.append(str(data, encoding="utf-8"))
+
+        # Restores QTextEdit text color determined by theme
+        self.stdoutArea.setTextColor(self.themeTextEditColor)
 
         # Writes standard output data to buffer
         writingToStdoutBuffer = self.stdoutFile.write(data)

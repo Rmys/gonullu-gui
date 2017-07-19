@@ -4,12 +4,12 @@
 <context>
     <name>__main__</name>
     <message>
-        <location filename="../bin/gonullu-gui-main" line="49"/>
+        <location filename="../bin/gonullu-gui-main" line="51"/>
         <source>Gonullu Graphical User Interface</source>
         <translation>Gonullu Graphical User Interface</translation>
     </message>
     <message>
-        <location filename="../bin/gonullu-gui-main" line="49"/>
+        <location filename="../bin/gonullu-gui-main" line="51"/>
         <source>Gonullu Graphical User Interface must be run as root.</source>
         <translation>Gonullu Graphical User Interface must be run as root.</translation>
     </message>
@@ -17,32 +17,32 @@
 <context>
     <name>gonulluWindow</name>
     <message>
-        <location filename="../gonullugui/coreui.py" line="50"/>
+        <location filename="../gonullugui/coreui.py" line="51"/>
         <source>E-Mail Address:</source>
         <translation>E-Mail Address:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="69"/>
+        <location filename="../gonullugui/coreui.py" line="70"/>
         <source>Launch</source>
         <translation>Launch</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="137"/>
+        <location filename="../gonullugui/coreui.py" line="138"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="76"/>
+        <location filename="../gonullugui/coreui.py" line="77"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="47"/>
+        <location filename="../gonullugui/coreui.py" line="48"/>
         <source>Number of CPUs:</source>
         <translation>Number of CPUs:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="131"/>
+        <location filename="../gonullugui/coreui.py" line="132"/>
         <source>Gonullu Graphical User Interface
 
 Version </source>
@@ -51,37 +51,37 @@ Version </source>
 Version </translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="39"/>
+        <location filename="../gonullugui/coreui.py" line="40"/>
         <source>Launching Gonullu</source>
         <translation>Launching Gonullu</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="43"/>
+        <location filename="../gonullugui/coreui.py" line="44"/>
         <source>Memory Percent:</source>
         <translation>Memory Percent:</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="57"/>
+        <location filename="../gonullugui/coreui.py" line="58"/>
         <source>Reserve memory as percent of full memory for Gonullu</source>
         <translation>Reserve memory as percent of full memory for Gonullu</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="61"/>
+        <location filename="../gonullugui/coreui.py" line="62"/>
         <source>Reserve number of CPUs for Gonullu</source>
         <translation>Reserve number of CPUs for Gonullu</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="64"/>
+        <location filename="../gonullugui/coreui.py" line="65"/>
         <source>Enter e-mail adress for Gonullu. The address must be authorized.</source>
         <translation>Enter e-mail adress for Gonullu. The address must be authorized.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="70"/>
+        <location filename="../gonullugui/coreui.py" line="71"/>
         <source>Launch Gonullu with main window</source>
         <translation>Launch Gonullu with main window</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="73"/>
+        <location filename="../gonullugui/coreui.py" line="74"/>
         <source>About Gonullu GUI</source>
         <translation>About Gonullu GUI</translation>
     </message>
@@ -89,59 +89,59 @@ Version </translation>
 <context>
     <name>gonulluWindow_2</name>
     <message>
-        <location filename="../gonullugui/coreui.py" line="149"/>
+        <location filename="../gonullugui/coreui.py" line="150"/>
         <source>Gonullu GUI Main Window</source>
         <translation>Gonullu GUI Main Window</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="327"/>
+        <location filename="../gonullugui/coreui.py" line="357"/>
         <source>Gonullu Graphical User Interface</source>
         <translation>Gonullu Graphical User Interface</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="204"/>
+        <location filename="../gonullugui/coreui.py" line="210"/>
         <source>Gonullu failed to start.</source>
         <translation>Gonullu failed to start.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="195"/>
+        <location filename="../gonullugui/coreui.py" line="201"/>
         <source>Gonullu is running...</source>
         <translation>Gonullu is running...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="173"/>
+        <location filename="../gonullugui/coreui.py" line="179"/>
         <source>Failed to open standart output log file.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="185"/>
+        <location filename="../gonullugui/coreui.py" line="191"/>
         <source>Failed to open standart error log file.</source>
         <translation>Failed to open standart error log file.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="349"/>
+        <location filename="../gonullugui/coreui.py" line="379"/>
         <source>Failed to write standard output log to buffer.</source>
         <translation>Failed to open standart error log file.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="355"/>
+        <location filename="../gonullugui/coreui.py" line="385"/>
         <source>Failed to flush standard output log to file.</source>
         <translation>Failed to flush standard output log to file.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="364"/>
+        <location filename="../gonullugui/coreui.py" line="394"/>
         <source>Failed to write standard error log to buffer.</source>
         <translation>Failed to write standard error log to buffer.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="370"/>
+        <location filename="../gonullugui/coreui.py" line="400"/>
         <source>Failed to flush standard error log to file.</source>
         <translation>Failed to flush standard error log to file.</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="157"/>
         <source>Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file.</source>
-        <translation>Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file.</translation>
+        <translation type="obsolete">Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file.</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="227"/>
@@ -159,17 +159,17 @@ Version </translation>
         <translation type="obsolete">Building {} package for {} seconds...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="240"/>
+        <location filename="../gonullugui/coreui.py" line="267"/>
         <source>Please start docker service before.</source>
         <translation>Please start docker service before.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="244"/>
+        <location filename="../gonullugui/coreui.py" line="271"/>
         <source>Unknown error: </source>
         <translation>Unknown error: </translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="250"/>
+        <location filename="../gonullugui/coreui.py" line="277"/>
         <source>Exiting Gonullu...</source>
         <translation>Exiting Gonullu...</translation>
     </message>
@@ -179,7 +179,7 @@ Version </translation>
         <translation type="obsolete">Updating {} image...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="258"/>
+        <location filename="../gonullugui/coreui.py" line="285"/>
         <source>The image has been updated to last version.</source>
         <translation>The image has been updated to last version.</translation>
     </message>
@@ -214,17 +214,17 @@ Version </translation>
         <translation type="obsolete">New package found: {}</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="286"/>
+        <location filename="../gonullugui/coreui.py" line="313"/>
         <source>Entered e-mail address isn&apos;t authorized.</source>
         <translation>Entered e-mail address isn&apos;t authorized.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="290"/>
+        <location filename="../gonullugui/coreui.py" line="317"/>
         <source>The Docker image couldn&apos;t be found.</source>
         <translation>The Docker image couldn&apos;t be found.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="294"/>
+        <location filename="../gonullugui/coreui.py" line="321"/>
         <source>A nondefined error has occured.</source>
         <translation>A nondefined error has occured.</translation>
     </message>
@@ -234,17 +234,17 @@ Version </translation>
         <translation type="obsolete">{} file couldn&apos;t be handled.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="228"/>
+        <location filename="../gonullugui/coreui.py" line="255"/>
         <source>Waiting for new package for {0} seconds...</source>
         <translation>Waiting for new package for {0} seconds...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="232"/>
+        <location filename="../gonullugui/coreui.py" line="259"/>
         <source>Finished building {0} package in {1} seconds.</source>
         <translation>Finished building {0} package in {1} seconds.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="236"/>
+        <location filename="../gonullugui/coreui.py" line="263"/>
         <source>Building {0} package for {1} seconds...</source>
         <translation>Building {0} package for {1} seconds...</translation>
     </message>
@@ -264,42 +264,42 @@ Version </translation>
 	usage={}</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="254"/>
+        <location filename="../gonullugui/coreui.py" line="281"/>
         <source>Updating {0} image...</source>
         <translation>Updating {0} image...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="262"/>
+        <location filename="../gonullugui/coreui.py" line="289"/>
         <source>Couldn&apos;t access the server for {0} seconds, reconnecting...</source>
         <translation>Couldn&apos;t access the server for {0} seconds, reconnecting...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="266"/>
+        <location filename="../gonullugui/coreui.py" line="293"/>
         <source>{0} file will be resent.</source>
         <translation>{0} file will be resent.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="270"/>
+        <location filename="../gonullugui/coreui.py" line="297"/>
         <source>{0} file is being sent...</source>
         <translation>{0} file is being sent...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="274"/>
+        <location filename="../gonullugui/coreui.py" line="301"/>
         <source>{0} file has been sent successfully.</source>
         <translation>{0} file has been sent successfully.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="278"/>
+        <location filename="../gonullugui/coreui.py" line="305"/>
         <source>{0} file couldn&apos;t be sent.</source>
         <translation>{0} file couldn&apos;t be sent.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="282"/>
+        <location filename="../gonullugui/coreui.py" line="309"/>
         <source>New package found: {0}</source>
         <translation>New package found: {0}</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="298"/>
+        <location filename="../gonullugui/coreui.py" line="325"/>
         <source>{0} file couldn&apos;t be handled.</source>
         <translation>{0} file couldn&apos;t be handled.</translation>
     </message>
@@ -319,7 +319,7 @@ Version </translation>
 	usage={4}</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="303"/>
+        <location filename="../gonullugui/coreui.py" line="330"/>
         <source>Namespace:
     cpu_set={0}
     email={1}
@@ -332,6 +332,11 @@ Version </translation>
     job={2}
     memory_limit={3}
     usage={4}</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="158"/>
+        <source>Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file. Success messages are green, warning messages are orange, error messages are red.</source>
+        <translation>Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file. Success messages are green, warning messages are orange, error messages are red.</translation>
     </message>
 </context>
 </TS>

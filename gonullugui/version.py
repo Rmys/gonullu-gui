@@ -1,4 +1,6 @@
 #
+#  Gonullu GUI version file
+#
 #  Copyright 2017 Erdem Ersoy (erdemersoy@live.com)
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -18,4 +20,4 @@
 #
 
 # Defines version string
-__version__ = "1.0rc3"
+__version__ = "1.0rc4"

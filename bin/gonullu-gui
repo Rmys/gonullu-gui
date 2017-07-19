@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# Gonullu GUI running script
+#
 # Copyright 2016 mbusb (https://github.com/mbusb/)
 #           2017 mbusb (https://github.com/mbusb/)
 #                Gautier Pelloux-Prayer (a.k.a. bagage)
