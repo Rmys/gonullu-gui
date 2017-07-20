@@ -18,4 +18,4 @@
 #
 
 # Imports modules
-from .coreui import gonulluWindow
+from .coreui import launchingWindow

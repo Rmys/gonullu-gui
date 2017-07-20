@@ -22,9 +22,9 @@
 # Imports modules
 from PyQt5.QtCore import QDir, QFile, QIODevice, QProcess, QT_VERSION_STR
 from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import (QWidget, QGridLayout, QLabel, QLineEdit,
-                             QMainWindow, QMessageBox, QPushButton, QTextEdit,
-                             QToolTip)
+from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QGridLayout, QLabel,
+                             QLineEdit, QMainWindow, QMessageBox, QPushButton,
+                             QTextEdit, QToolTip, QWidget)
 from pkg_resources import parse_version
 from .version import __version__
 
@@ -32,13 +32,18 @@ from .version import __version__
 launching = QProcess()
 
 # Defines launching window class
-class gonulluWindow(QWidget):
+class launchingWindow(QDialog):
     def __init__(self, parent=None):
         super().__init__()
 
         # Sets window title of launching window and resizes this window
         self.setWindowTitle(self.tr("Launching Gonullu"))
-        self.setFixedSize(360, 240)
+        self.setFixedSize(304, 169)
+        
+        # Moves launching window to center of the screen
+        launchingWindowLeft = (QDesktopWidget().width() - self.width()) // 2
+        launchingWindowTop = (QDesktopWidget().height() - self.height()) // 2
+        self.move(launchingWindowLeft, launchingWindowTop)
 
         # Defines labels of launching window and sets tooltips for them
         memoryLabel = QLabel(self.tr("Memory Percent:"))
@@ -77,23 +82,23 @@ class gonulluWindow(QWidget):
         aboutQtButton.setToolTip(self.tr("About Qt"))
 
         # Sets layout of launching window and add widgets to the layout
-        gonulluWindowLayout = QGridLayout()
-        gonulluWindowLayout.setSpacing(10)
+        launchingWindowLayout = QGridLayout()
+        launchingWindowLayout.setSpacing(10)
 
-        gonulluWindowLayout.addWidget(memoryLabel, 0, 0)
-        gonulluWindowLayout.addWidget(self.memoryEdit, 0, 1, 1, 2)
+        launchingWindowLayout.addWidget(memoryLabel, 0, 0)
+        launchingWindowLayout.addWidget(self.memoryEdit, 0, 1, 1, 2)
 
-        gonulluWindowLayout.addWidget(cpuLabel, 1, 0)
-        gonulluWindowLayout.addWidget(self.cpuEdit, 1, 1, 1, 2)
+        launchingWindowLayout.addWidget(cpuLabel, 1, 0)
+        launchingWindowLayout.addWidget(self.cpuEdit, 1, 1, 1, 2)
 
-        gonulluWindowLayout.addWidget(emailLabel, 2, 0)
-        gonulluWindowLayout.addWidget(self.emailEdit, 2, 1, 1, 2)
+        launchingWindowLayout.addWidget(emailLabel, 2, 0)
+        launchingWindowLayout.addWidget(self.emailEdit, 2, 1, 1, 2)
 
-        gonulluWindowLayout.addWidget(launchButton, 3, 0)
-        gonulluWindowLayout.addWidget(aboutButton, 3, 1)
-        gonulluWindowLayout.addWidget(aboutQtButton, 3, 2)
+        launchingWindowLayout.addWidget(launchButton, 3, 0)
+        launchingWindowLayout.addWidget(aboutButton, 3, 1)
+        launchingWindowLayout.addWidget(aboutQtButton, 3, 2)
 
-        self.setLayout(gonulluWindowLayout)
+        self.setLayout(launchingWindowLayout)
 
         # Connects signals to the slots
         launchButton.clicked.connect(self.launchSlot)
@@ -103,7 +108,7 @@ class gonulluWindow(QWidget):
     # Defines launching slot
     def launchSlot(self):
         # Instantiation of main window
-        self.mainWindow = gonulluWindow_2()
+        self.mainWindow = mainWindow()
 
         # Shows main window and closes launching window
         self.mainWindow.show()
@@ -139,7 +144,7 @@ class gonulluWindow(QWidget):
 
 
 # Defines main window class
-class gonulluWindow_2(QMainWindow):
+class mainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__()
 
@@ -149,6 +154,11 @@ class gonulluWindow_2(QMainWindow):
         # Sets window title of main window and resizes this window
         self.setWindowTitle(self.tr("Gonullu GUI Main Window"))
         self.resize(640, 480)
+
+        # Moves main window to center of the screen
+        mainWindowLeft = (QDesktopWidget().width() - self.width()) // 2
+        mainWindowTop = (QDesktopWidget().height() - self.height()) // 2
+        self.move(mainWindowLeft, mainWindowTop)
 
         # Defines the area standart output redirects here of main window, sets
         # tooltip for the area and set the area to central widget of main
@@ -239,13 +249,13 @@ class gonulluWindow_2(QMainWindow):
         ###############################################################
         
         if (strdata[:12] == "  [x] Hata: "):
-            self.stdoutArea.setTextColor(QColor("#FF0000"))
+            self.stdoutArea.setTextColor(QColor("#FF0000"))  # Red text
 
         elif (strdata[:13] == "  [!] Uyarı: "):
-            self.stdoutArea.setTextColor(QColor("#FFA500"))
+            self.stdoutArea.setTextColor(QColor("#FFA500"))  # Orange text
 
         elif (strdata[:16] == "  [+] Başarılı: "):
-            self.stdoutArea.setTextColor(QColor("#008000"))
+            self.stdoutArea.setTextColor(QColor("#008000"))  # Green text
 
         ########################################################
         # Writes to standart output area according to the data #
