@@ -24,7 +24,7 @@ from PyQt5.QtCore import QDir, QFile, QIODevice, QProcess, QT_VERSION_STR
 from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QGridLayout, QLabel,
                              QLineEdit, QMainWindow, QMessageBox, QPushButton,
-                             QTextEdit, QToolTip, QWidget)
+                             QTextEdit, QToolTip)
 from pkg_resources import parse_version
 from .version import __version__
 
@@ -39,7 +39,7 @@ class launchingWindow(QDialog):
         # Sets window title of launching window and resizes this window
         self.setWindowTitle(self.tr("Launching Gonullu"))
         self.setFixedSize(304, 169)
-        
+
         # Moves launching window to center of the screen
         launchingWindowLeft = (QDesktopWidget().width() - self.width()) // 2
         launchingWindowTop = (QDesktopWidget().height() - self.height()) // 2
@@ -107,6 +107,16 @@ class launchingWindow(QDialog):
 
     # Defines launching slot
     def launchSlot(self):
+
+        # Gives error if memoryLabel or cpuLabel is empty
+        if self.memoryEdit.text() == "" or self.cpuEdit.text() == "":
+            QMessageBox().critical(self,
+                                   self.tr("Gonullu Graphical User Interface"),
+                                   self.tr("'Memory Percent' and 'Number of "
+                                   "CPUs' entering areas can not be empty."),
+                                   QMessageBox.Ok)
+            return
+
         # Instantiation of main window
         self.mainWindow = mainWindow()
 
@@ -167,10 +177,9 @@ class mainWindow(QMainWindow):
         self.stdoutArea.setReadOnly(True)
         self.stdoutArea.setToolTip(
             self.tr("Standart output is directed here and /var/log/stdout file"
-                    ", standart error output is shown as message box and "
-                    "is directed to /var/log/stderr file. Success messages "
-                    "are green, warning messages are orange, error messages are"
-                    " red."))
+                    ", standart error output is directed to /var/log/stderr "
+                    "file. Success messages are green, warning messages are "
+                    "orange, error messages are red."))
         self.setCentralWidget(self.stdoutArea)
         
         # Stores QTextEdit text color determined by theme
@@ -364,10 +373,6 @@ class mainWindow(QMainWindow):
     # Defines reading standart error output slot
     def readFromStderr(self):
         data = launching.readAllStandardError()
-        QMessageBox().information(self,
-                                  self.tr("Gonullu Graphical User Interface"),
-                                  str(data, encoding="utf-8"),
-                                  QMessageBox.Ok)
 
         # Writes standard error data to buffer
         writingToStderrBuffer = self.stderrFile.write(data)

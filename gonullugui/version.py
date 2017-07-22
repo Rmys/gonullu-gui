@@ -20,4 +20,4 @@
 #
 
 # Defines version string
-__version__ = "1.0rc5"
+__version__ = "1.0rc6"

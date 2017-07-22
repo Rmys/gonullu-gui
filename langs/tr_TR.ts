@@ -387,7 +387,7 @@ Sürüm </translation>
         <translation>Ana pencereyle Gonullu&apos;yu çalıştır</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="143"/>
+        <location filename="../gonullugui/coreui.py" line="151"/>
         <source>About</source>
         <translation>Hakkında</translation>
     </message>
@@ -402,7 +402,7 @@ Sürüm </translation>
         <translation>Qt Hakkında</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="137"/>
+        <location filename="../gonullugui/coreui.py" line="145"/>
         <source>Gonullu Graphical User Interface
 
 Version </source>
@@ -410,136 +410,146 @@ Version </source>
 
 Sürüm </translation>
     </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="119"/>
+        <source>Gonullu Graphical User Interface</source>
+        <translation>Gonullu Grafik Kullanıcı Arayüzü</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="119"/>
+        <source>&apos;Memory Percent&apos; and &apos;Number of CPUs&apos; entering areas can not be empty.</source>
+        <translation>&quot;Bellek Yüzdesi&quot; ve &quot;CPU Sayısı&quot; giriş alanları boş olamaz.</translation>
+    </message>
 </context>
 <context>
     <name>mainWindow</name>
     <message>
-        <location filename="../gonullugui/coreui.py" line="155"/>
+        <location filename="../gonullugui/coreui.py" line="163"/>
         <source>Gonullu GUI Main Window</source>
         <translation>Gonullu GKA Ana Pencere</translation>
     </message>
     <message>
         <location filename="../gonullugui/coreui.py" line="163"/>
         <source>Standart output is directed here and /var/log/stdout file, standart error output is shown as message box and is directed to /var/log/stderr file. Success messages are green, warning messages are orange, error messages are red.</source>
-        <translation>Standart çıktı buraya ve /var/log/stdout dosyasına yönlendirilir, standart hatâ çıktısı ileti kutusu olarak gösterilir ve /var/log/stderr dosyasına yönlendirilir. Başarı iletileri yeşildir, uyarı iletileri turuncudur, hatâ iletileri kırmızıdır.</translation>
+        <translation type="obsolete">Standart çıktı buraya ve /var/log/stdout dosyasına yönlendirilir, standart hatâ çıktısı ileti kutusu olarak gösterilir ve /var/log/stderr dosyasına yönlendirilir. Başarı iletileri yeşildir, uyarı iletileri turuncudur, hatâ iletileri kırmızıdır.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="362"/>
+        <location filename="../gonullugui/coreui.py" line="227"/>
         <source>Gonullu Graphical User Interface</source>
         <translation>Gonullu Grafik Kullanıcı Arayüzü</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="184"/>
+        <location filename="../gonullugui/coreui.py" line="196"/>
         <source>Failed to open standart output log file.</source>
         <translation>Standart çıktı kayıt dosyası açma başarısız.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="196"/>
+        <location filename="../gonullugui/coreui.py" line="208"/>
         <source>Failed to open standart error log file.</source>
         <translation>Standart hatâ kayıt dosyası açma başarısız.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="206"/>
+        <location filename="../gonullugui/coreui.py" line="218"/>
         <source>Gonullu is running...</source>
         <translation>Gonullu çalışıyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="215"/>
+        <location filename="../gonullugui/coreui.py" line="227"/>
         <source>Gonullu failed to start.</source>
         <translation>Gonullu başlatılamadı.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="260"/>
+        <location filename="../gonullugui/coreui.py" line="272"/>
         <source>Waiting for new package for {0} seconds...</source>
         <translation>{0} sâniyedir yeni paket bekleniyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="264"/>
+        <location filename="../gonullugui/coreui.py" line="276"/>
         <source>Finished building {0} package in {1} seconds.</source>
         <translation>{0} paketinin inşâsı {1} sâniyede bitti.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="268"/>
+        <location filename="../gonullugui/coreui.py" line="280"/>
         <source>Building {0} package for {1} seconds...</source>
         <translation>{0} paketinin inşâsı {1} sâniyedir devâm ediyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="272"/>
+        <location filename="../gonullugui/coreui.py" line="284"/>
         <source>Please start docker service before.</source>
         <translation>Lütfen önce docker servisini çalıştırınız.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="276"/>
+        <location filename="../gonullugui/coreui.py" line="288"/>
         <source>Unknown error: </source>
         <translation>Bilinmeyen hatâ: </translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="282"/>
+        <location filename="../gonullugui/coreui.py" line="294"/>
         <source>Exiting Gonullu...</source>
         <translation>Gonullu&apos;dan çıkılıyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="286"/>
+        <location filename="../gonullugui/coreui.py" line="298"/>
         <source>Updating {0} image...</source>
         <translation>{0} kalıbı güncelleniyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="290"/>
+        <location filename="../gonullugui/coreui.py" line="302"/>
         <source>The image has been updated to last version.</source>
         <translation>Kalıp en son sürüme güncellendi.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="294"/>
+        <location filename="../gonullugui/coreui.py" line="306"/>
         <source>Couldn&apos;t access the server for {0} seconds, reconnecting...</source>
         <translation>Sunucuya {0} sâniyedir bağlanılamadı, yeniden bağlanılıyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="298"/>
+        <location filename="../gonullugui/coreui.py" line="310"/>
         <source>{0} file will be resent.</source>
         <translation>{0} dosyası yeniden gönderilecek.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="302"/>
+        <location filename="../gonullugui/coreui.py" line="314"/>
         <source>{0} file is being sent...</source>
         <translation>{0} dosyası gönderiliyor...</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="306"/>
+        <location filename="../gonullugui/coreui.py" line="318"/>
         <source>{0} file has been sent successfully.</source>
         <translation>{0} dosyası başarıyla gönderildi.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="310"/>
+        <location filename="../gonullugui/coreui.py" line="322"/>
         <source>{0} file couldn&apos;t be sent.</source>
         <translation>{0} dosyası gönderilemedi.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="314"/>
+        <location filename="../gonullugui/coreui.py" line="326"/>
         <source>New package found: {0}</source>
         <translation>Yeni paket bulundu: {0}</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="318"/>
+        <location filename="../gonullugui/coreui.py" line="330"/>
         <source>Entered e-mail address isn&apos;t authorized.</source>
         <translation>Girilen e-posta adresi yetkilendirilmemiş.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="322"/>
+        <location filename="../gonullugui/coreui.py" line="334"/>
         <source>The Docker image couldn&apos;t be found.</source>
         <translation>Docker kalıbı bulunamadı.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="326"/>
+        <location filename="../gonullugui/coreui.py" line="338"/>
         <source>A nondefined error has occured.</source>
         <translation>Tanımlanmayan bir hatâ oluştu.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="330"/>
+        <location filename="../gonullugui/coreui.py" line="342"/>
         <source>{0} file couldn&apos;t be handled.</source>
         <translation>{0} dosyası işlenemiyor.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="335"/>
+        <location filename="../gonullugui/coreui.py" line="347"/>
         <source>Namespace:
     cpu_set={0}
     email={1}
@@ -554,24 +564,29 @@ Sürüm </translation>
     usage={4}</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="384"/>
+        <location filename="../gonullugui/coreui.py" line="392"/>
         <source>Failed to write standard output log to buffer.</source>
         <translation>Standart çıktı kaydını tampona yazma başarısız.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="390"/>
+        <location filename="../gonullugui/coreui.py" line="398"/>
         <source>Failed to flush standard output log to file.</source>
         <translation>Standart çıktı kaydını dosyaya yazma başarısız.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="399"/>
+        <location filename="../gonullugui/coreui.py" line="407"/>
         <source>Failed to write standard error log to buffer.</source>
         <translation>Standart hatâ kaydını tampona yazma başarısız.</translation>
     </message>
     <message>
-        <location filename="../gonullugui/coreui.py" line="405"/>
+        <location filename="../gonullugui/coreui.py" line="413"/>
         <source>Failed to flush standard error log to file.</source>
         <translation>Standart hatâ kaydını dosyaya yazma başarısız.</translation>
+    </message>
+    <message>
+        <location filename="../gonullugui/coreui.py" line="176"/>
+        <source>Standart output is directed here and /var/log/stdout file, standart error output is directed to /var/log/stderr file. Success messages are green, warning messages are orange, error messages are red.</source>
+        <translation>Standart çıktı buraya ve /var/log/stdout dosyasına yönlendirilir, standart hatâ çıktısı /var/log/stderr dosyasına yönlendirilir. Başarı iletileri yeşildir, uyarı iletileri turuncudur, hatâ iletileri kırmızıdır.</translation>
     </message>
 </context>
 </TS>
