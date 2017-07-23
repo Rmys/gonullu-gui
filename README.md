@@ -4,7 +4,7 @@ Gonullu Graphical User Interface (Gonullu GUI) is GUI for Pisi GNU/Linux's Gonul
 **NOTE:** Gonullu is Turkish only but Gonullu GUI is multilingual.
 
 # Versioning
-Version numbers consist a major release and a minor release number. The major release number starts from 1, the minor release number starts from 0. Version numbers contain "dev" string (e.g. 1.0.dev0, 2.0.dev3) indicate development version of major release, and 1.0.dev0 version number indicates entire non-functional phase. After development versions, preview versions come. Version numbers contain "rc" string (e.g. 1.0rc2) indicate preview versions. Also, after "dev" and "rc" strings, very minor version numbers come. Very minor version number starts from 1 except 1.0dev versions.
+Stable version numbers consist a major release and a minor release number. The major release number starts from 1, the minor release number starts from 0. Version numbers contain "dev" string (e.g. 1.0.dev0, 2.0.dev3) indicate development version of major release, and 1.0.dev0 version number indicates entire non-functional phase. After development versions, preview versions come. Version numbers contain "rc" string (e.g. 1.0rc2) indicate preview versions. Also, after "dev" and "rc" strings, very minor version numbers come. Very minor version number starts from 1 except 1.0dev versions.
 
 **NOTE:** Very old non-functional phase versions may be different beacuse versioning has been changed already.
 
