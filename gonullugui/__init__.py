@@ -1,4 +1,6 @@
 #
+#  __init__.py file of Gonullu GUI's gonullugui package
+#
 #  Copyright 2017 Erdem Ersoy (erdemersoy@live.com)
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -16,6 +18,3 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 #
-
-# Imports modules
-from .coreui import launchingWindow
